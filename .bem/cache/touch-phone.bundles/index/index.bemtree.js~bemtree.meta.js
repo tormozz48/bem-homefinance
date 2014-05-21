@@ -1,0 +1,1 @@
+{"buildFiles":[{"file":"i-bem.bemtree","absPath":"/Users/user/Development/bem-homefinance/libs/bem-core/common.blocks/i-bem/i-bem.bemtree","lastUpdated":1395664952000,"suffix":"bemtree"}]}
