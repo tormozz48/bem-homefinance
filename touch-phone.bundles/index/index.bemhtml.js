@@ -1,6 +1,964 @@
 (function(g) {
   var __bem_xjst = (function(exports) {
-     var __$ref={};function apply(ctx){try{return applyc(ctx||this,__$ref)}catch(e){(ctx||this).xjstContext=e;throw e}}exports.apply=apply;function applyc(__$ctx,__$ref){var __$t=__$ctx._mode;if(__$t==="js"){if(__$ctx.block==="ua"&&!__$ctx.elem){__$ctx.__$a=0;return true}__$ctx.__$a=0;return undefined}else if(__$t==="attrs"){var __$t=__$ctx.block;if(__$t==="page"){var __$t=__$ctx.elem;if(__$t==="js"){if(__$ctx.ctx.url){__$ctx.__$a=0;return{src:__$ctx.ctx.url}}}else if(__$t==="css"){if(__$ctx.ctx.url){__$ctx.__$a=0;return{rel:"stylesheet",href:__$ctx.ctx.url}}}else if(__$t==="favicon"){__$ctx.__$a=0;return{rel:"shortcut icon",href:__$ctx.ctx.url}}}__$ctx.__$a=0;return undefined}else if(__$t==="tag"){var __$r=__$g0(__$ctx,__$ref);if(__$r!==__$ref)return __$r}else if(__$t==="bem"){var __$t=__$ctx.block;if(__$t==="page"){var __$t=__$ctx.elem;if(__$t==="js"){__$ctx.__$a=0;return false}else if(__$t==="css"){__$ctx.__$a=0;return false}else if(__$t==="head"){__$ctx.__$a=0;return false}else if(__$t==="favicon"){__$ctx.__$a=0;return false}else if(__$t==="link"){__$ctx.__$a=0;return false}else if(__$t==="meta"){__$ctx.__$a=0;return false}}else if(__$t==="ua"){if(!__$ctx.elem){__$ctx.__$a=0;return false}}__$ctx.__$a=0;return undefined}else if(__$t==="content"){var __$t=__$ctx.block;if(__$t==="page"){if(__$ctx.elem==="body"&&__$ctx.__$a!==3){__$ctx.__$a=0;return[function(){var __$r__$2;__$ctx.__$a=3;__$r__$2=applyc(__$ctx,__$ref);return __$r__$2}(),__$ctx.ctx.scripts]}}else if(__$t==="ua"){if(!__$ctx.elem){__$ctx.__$a=0;return["(function(e,c){",'e[c]=e[c].replace(/(ua_js_)no/g,"$1yes");','})(document.documentElement,"className");']}}__$ctx.__$a=0;return __$ctx.ctx.content}else if(__$t==="mix"){if(__$ctx.block==="page"&&!__$ctx.elem&&__$ctx.__$a!==1){__$ctx.__$a=0;var __$r=function(){var __$r__$0;__$ctx.__$a=1;__$r__$0=applyc(__$ctx,__$ref);return __$r__$0}().concat({block:"ua",js:true});if(__$r!==__$ref)return __$r}__$ctx.__$a=0;return undefined}else if(__$t==="head"){if(__$ctx.block==="page"&&!__$ctx.elem){__$ctx.__$a=0;return[{block:"ua"},{elem:"meta",attrs:{name:"viewport",content:"width=device-width,"+(__$ctx.ctx.zoom?"initial-scale=1":"maximum-scale=1,initial-scale=1,user-scalable=0")}},{elem:"meta",attrs:{name:"format-detection",content:"telephone=no"}},{elem:"link",attrs:{name:"apple-mobile-web-app-capable",content:"yes"}},__$ctx.ctx.head]}}else if(__$t==="default"){var __$t=__$ctx.block;if(__$t==="page"){if(__$ctx.elem==="body"&&__$ctx.__$a!==2){__$ctx.__$a=0;var __$r=__$b31(__$ctx,__$ref);if(__$r!==__$ref)return __$r}if(!__$ctx.elem&&__$ctx.__$a!==4){__$ctx.__$a=0;var __$r=__$b32(__$ctx,__$ref);if(__$r!==__$ref)return __$r}}__$ctx.__$a=0;var __$r=__$b33(__$ctx,__$ref);if(__$r!==__$ref)return __$r}else if(__$t==="cls"){__$ctx.__$a=0;return undefined}else if(__$t===""){if(__$ctx.ctx&&__$ctx.ctx._vow&&__$ctx.__$a!==5){__$ctx.__$a=0;var __$r=__$b35(__$ctx,__$ref);if(__$r!==__$ref)return __$r}if(__$ctx._.isSimple(__$ctx.ctx)){__$ctx.__$a=0;var __$r=__$b36(__$ctx,__$ref);if(__$r!==__$ref)return __$r}if(!__$ctx.ctx){__$ctx.__$a=0;var __$r=__$b37(__$ctx,__$ref);if(__$r!==__$ref)return __$r}if(__$ctx._.isArray(__$ctx.ctx)){__$ctx.__$a=0;var __$r=__$b38(__$ctx,__$ref);if(__$r!==__$ref)return __$r}__$ctx.__$a=0;var __$r=__$b39(__$ctx,__$ref);if(__$r!==__$ref)return __$r}__$ctx.__$a=0}[function(exports){var BEM_={},toString=Object.prototype.toString,isArray=Array.isArray||function(obj){return toString.call(obj)==="[object Array]"},SHORT_TAGS={area:1,base:1,br:1,col:1,command:1,embed:1,hr:1,img:1,input:1,keygen:1,link:1,meta:1,param:1,source:1,wbr:1};!function(BEM,undefined){var MOD_DELIM="_",ELEM_DELIM="__",NAME_PATTERN="[a-zA-Z0-9-]+";function buildModPostfix(modName,modVal){var res=MOD_DELIM+modName;if(modVal!==true)res+=MOD_DELIM+modVal;return res}function buildBlockClass(name,modName,modVal){var res=name;if(modVal)res+=buildModPostfix(modName,modVal);return res}function buildElemClass(block,name,modName,modVal){var res=buildBlockClass(block)+ELEM_DELIM+name;if(modVal)res+=buildModPostfix(modName,modVal);return res}BEM.INTERNAL={NAME_PATTERN:NAME_PATTERN,MOD_DELIM:MOD_DELIM,ELEM_DELIM:ELEM_DELIM,buildModPostfix:buildModPostfix,buildClass:function(block,elem,modName,modVal){var typeOfModName=typeof modName;if(typeOfModName==="string"||typeOfModName==="boolean"){var typeOfModVal=typeof modVal;if(typeOfModVal!=="string"&&typeOfModVal!=="boolean"){modVal=modName;modName=elem;elem=undefined}}else if(typeOfModName!=="undefined"){modName=undefined}else if(elem&&typeof elem!=="string"){elem=undefined}if(!(elem||modName)){return block}if(elem)return buildElemClass(block,elem,modName,modVal);else return buildBlockClass(block,modName,modVal)},buildModsClasses:function(block,elem,mods){var res="";if(mods){var modName;for(modName in mods){if(!mods.hasOwnProperty(modName))continue;var modVal=mods[modName];if(!modVal&&modVal!==0)continue;typeof modVal!=="boolean"&&(modVal+="");res+=" "+(elem?buildElemClass(block,elem,modName,modVal):buildBlockClass(block,modName,modVal))}}return res},buildClasses:function(block,elem,mods){var res="";if(elem)res+=buildElemClass(block,elem);else res+=buildBlockClass(block);res+=this.buildModsClasses(block,elem,mods);return res}}}(BEM_);var ts={'"':"&quot;","&":"&amp;","<":"&lt;",">":"&gt;"},f=function(t){return ts[t]||t};var buildEscape=function(r){r=new RegExp(r,"g");return function(s){return(""+s).replace(r,f)}};function BEMContext(context,apply_){this.ctx=typeof context===null?"":context;this.apply=apply_;this._str="";var self=this;this._buf={push:function(){var chunks=Array.prototype.slice.call(arguments).join("");self._str+=chunks},join:function(){return this._str}};this._=this;this._start=true;this._mode="";this._listLength=0;this._notNewList=false;this.position=0;this.block=undefined;this.elem=undefined;this.mods=undefined;this.elemMods=undefined}BEMContext.prototype.isArray=isArray;BEMContext.prototype.isSimple=function isSimple(obj){var t=typeof obj;return t==="string"||t==="number"||t==="boolean"};BEMContext.prototype.isShortTag=function isShortTag(t){return SHORT_TAGS.hasOwnProperty(t)};BEMContext.prototype.extend=function extend(o1,o2){if(!o1||!o2)return o1||o2;var res={},n;for(n in o1)o1.hasOwnProperty(n)&&(res[n]=o1[n]);for(n in o2)o2.hasOwnProperty(n)&&(res[n]=o2[n]);return res};var cnt=0,id=+new Date,expando="__"+id,get=function(){return"uniq"+id+ ++cnt};BEMContext.prototype.identify=function(obj,onlyGet){if(!obj)return get();if(onlyGet||obj[expando]){return obj[expando]}else{return obj[expando]=get()}};BEMContext.prototype.xmlEscape=buildEscape("[&<>]");BEMContext.prototype.attrEscape=buildEscape('["&<>]');BEMContext.prototype.BEM=BEM_;BEMContext.prototype.isFirst=function isFirst(){return this.position===1};BEMContext.prototype.isLast=function isLast(){return this.position===this._listLength};BEMContext.prototype.generateId=function generateId(){return this.identify(this.ctx)};var oldApply=exports.apply;exports.apply=BEMContext.apply=function _apply(context){var ctx=new BEMContext(context||this,oldApply);ctx.apply();return ctx._str};BEMContext.prototype.reapply=BEMContext.apply}].forEach(function(fn){fn(exports,this)},{recordExtensions:function(ctx){ctx.__$a=0;ctx._mode=undefined;ctx.ctx=undefined;ctx._str=undefined;ctx.block=undefined;ctx.elem=undefined;ctx._notNewList=undefined;ctx.position=undefined;ctx._listLength=undefined;ctx._currBlock=undefined;ctx.mods=undefined;ctx.elemMods=undefined}});function __$b31(__$ctx,__$ref){__$ctx.__$a=0;__$ctx.ctx.elem=null;var __$r__$1;__$ctx.__$a=2;__$r__$1=applyc(__$ctx,__$ref);return}function __$b32(__$ctx,__$ref){__$ctx.__$a=0;var ctx__$3=__$ctx.ctx;var __$r__$4;var __$l0__$5=__$ctx._mode;__$ctx._mode="";var __$l1__$6=__$ctx.ctx;__$ctx.ctx=[ctx__$3.doctype||"<!DOCTYPE html>",{tag:"html",cls:"ua_js_no",content:[{elem:"head",content:[{tag:"meta",attrs:{charset:"utf-8"}},{tag:"title",content:ctx__$3.title},{block:"ua"},ctx__$3.head,ctx__$3.styles,ctx__$3.favicon?{elem:"favicon",url:ctx__$3.favicon}:""]},__$ctx.extend(ctx__$3,{elem:"body"})]}];var __$r__$7;__$ctx.__$a=4;__$r__$7=applyc(__$ctx,__$ref);__$r__$4=__$r__$7;__$ctx._mode=__$l0__$5;__$ctx.ctx=__$l1__$6;return}function __$b33(__$ctx,__$ref){__$ctx.__$a=0;var _this__$8=__$ctx,BEM___$9=_this__$8.BEM,v__$10=__$ctx.ctx,isBEM__$11,tag__$12,result__$13;var __$r__$14;var __$l0__$15=__$ctx._str;__$ctx._str="";var __$r__$16;var __$l1__$17=__$ctx._mode;__$ctx._mode="tag";__$r__$16=applyc(__$ctx,__$ref);__$ctx._mode=__$l1__$17;tag__$12=__$r__$16;typeof tag__$12!=="undefined"||(tag__$12=v__$10.tag);typeof tag__$12!=="undefined"||(tag__$12="div");if(tag__$12){var jsParams__$18,js__$19;if(__$ctx.block&&v__$10.js!==false){var __$r__$20;var __$l2__$21=__$ctx._mode;__$ctx._mode="js";__$r__$20=applyc(__$ctx,__$ref);__$ctx._mode=__$l2__$21;js__$19=__$r__$20;js__$19=js__$19?__$ctx._.extend(v__$10.js,js__$19===true?{}:js__$19):v__$10.js===true?{}:v__$10.js;js__$19&&((jsParams__$18={})[BEM___$9.INTERNAL.buildClass(__$ctx.block,v__$10.elem)]=js__$19)}__$ctx._str+="<"+tag__$12;var __$r__$22;var __$l3__$23=__$ctx._mode;__$ctx._mode="bem";__$r__$22=applyc(__$ctx,__$ref);__$ctx._mode=__$l3__$23;isBEM__$11=__$r__$22;typeof isBEM__$11!=="undefined"||(isBEM__$11=typeof v__$10.bem!=="undefined"?v__$10.bem:v__$10.block||v__$10.elem);var __$r__$25;var __$l4__$26=__$ctx._mode;__$ctx._mode="cls";__$r__$25=applyc(__$ctx,__$ref);__$ctx._mode=__$l4__$26;var cls__$24=__$r__$25;cls__$24||(cls__$24=v__$10.cls);var addJSInitClass__$27=v__$10.block&&jsParams__$18;if(isBEM__$11||cls__$24){__$ctx._str+=' class="';if(isBEM__$11){__$ctx._str+=BEM___$9.INTERNAL.buildClasses(__$ctx.block,v__$10.elem,v__$10.elemMods||v__$10.mods);var __$r__$29;var __$l5__$30=__$ctx._mode;__$ctx._mode="mix";__$r__$29=applyc(__$ctx,__$ref);__$ctx._mode=__$l5__$30;var mix__$28=__$r__$29;v__$10.mix&&(mix__$28=mix__$28?mix__$28.concat(v__$10.mix):v__$10.mix);if(mix__$28){var visited__$31={},visitedKey__$32=function(block,elem){return(block||"")+"__"+(elem||"")};visited__$31[visitedKey__$32(__$ctx.block,__$ctx.elem)]=true;if(!__$ctx._.isArray(mix__$28))mix__$28=[mix__$28];for(var i__$33=0;i__$33<mix__$28.length;i__$33++){var mixItem__$34=mix__$28[i__$33],hasItem__$35=mixItem__$34.block||mixItem__$34.elem,block__$36=mixItem__$34.block||mixItem__$34._block||_this__$8.block,elem__$37=mixItem__$34.elem||mixItem__$34._elem||_this__$8.elem;if(hasItem__$35)__$ctx._str+=" ";__$ctx._str+=BEM___$9.INTERNAL[hasItem__$35?"buildClasses":"buildModsClasses"](block__$36,mixItem__$34.elem||mixItem__$34._elem||(mixItem__$34.block?undefined:_this__$8.elem),mixItem__$34.elemMods||mixItem__$34.mods);if(mixItem__$34.js){(jsParams__$18||(jsParams__$18={}))[BEM___$9.INTERNAL.buildClass(block__$36,mixItem__$34.elem)]=mixItem__$34.js===true?{}:mixItem__$34.js;addJSInitClass__$27||(addJSInitClass__$27=block__$36&&!mixItem__$34.elem)}if(hasItem__$35&&!visited__$31[visitedKey__$32(block__$36,elem__$37)]){visited__$31[visitedKey__$32(block__$36,elem__$37)]=true;var __$r__$39;var __$l6__$40=__$ctx._mode;__$ctx._mode="mix";var __$l7__$41=__$ctx.block;__$ctx.block=block__$36;var __$l8__$42=__$ctx.elem;__$ctx.elem=elem__$37;__$r__$39=applyc(__$ctx,__$ref);__$ctx._mode=__$l6__$40;__$ctx.block=__$l7__$41;__$ctx.elem=__$l8__$42;var nestedMix__$38=__$r__$39;if(nestedMix__$38){for(var j__$43=0;j__$43<nestedMix__$38.length;j__$43++){var nestedItem__$44=nestedMix__$38[j__$43];if(!nestedItem__$44.block&&!nestedItem__$44.elem||!visited__$31[visitedKey__$32(nestedItem__$44.block,nestedItem__$44.elem)]){nestedItem__$44._block=block__$36;nestedItem__$44._elem=elem__$37;mix__$28.splice(i__$33+1,0,nestedItem__$44)}}}}}}}if(cls__$24)__$ctx._str+=isBEM__$11?" "+cls__$24:cls__$24;if(addJSInitClass__$27)__$ctx._str+=' i-bem"';else __$ctx._str+='"'}if(isBEM__$11&&jsParams__$18){__$ctx._str+=' data-bem="'+__$ctx._.attrEscape(JSON.stringify(jsParams__$18))+'"'}var __$r__$46;var __$l9__$47=__$ctx._mode;__$ctx._mode="attrs";__$r__$46=applyc(__$ctx,__$ref);__$ctx._mode=__$l9__$47;var attrs__$45=__$r__$46;attrs__$45=__$ctx._.extend(attrs__$45,v__$10.attrs);if(attrs__$45){var name__$48,attr__$49;for(name__$48 in attrs__$45){attr__$49=attrs__$45[name__$48];if(attr__$49===undefined)continue;__$ctx._str+=" "+name__$48+'="'+__$ctx._.attrEscape(__$ctx._.isSimple(attr__$49)?attr__$49:__$ctx.reapply(attr__$49))+'"'}}}if(__$ctx._.isShortTag(tag__$12)){__$ctx._str+="/>"}else{if(tag__$12)__$ctx._str+=">";var __$r__$51;var __$l10__$52=__$ctx._mode;__$ctx._mode="content";__$r__$51=applyc(__$ctx,__$ref);__$ctx._mode=__$l10__$52;var content__$50=__$r__$51;if(content__$50||content__$50===0){isBEM__$11=__$ctx.block||__$ctx.elem;var __$r__$53;var __$l11__$54=__$ctx._mode;__$ctx._mode="";var __$l12__$55=__$ctx._notNewList;__$ctx._notNewList=false;var __$l13__$56=__$ctx.position;__$ctx.position=isBEM__$11?1:__$ctx.position;var __$l14__$57=__$ctx._listLength;__$ctx._listLength=isBEM__$11?1:__$ctx._listLength;var __$l15__$58=__$ctx.ctx;__$ctx.ctx=content__$50;__$r__$53=applyc(__$ctx,__$ref);__$ctx._mode=__$l11__$54;__$ctx._notNewList=__$l12__$55;__$ctx.position=__$l13__$56;__$ctx._listLength=__$l14__$57;__$ctx.ctx=__$l15__$58}if(tag__$12)__$ctx._str+="</"+tag__$12+">"}result__$13=__$ctx._str;__$r__$14=undefined;__$ctx._str=__$l0__$15;__$ctx._buf.push(result__$13);return}function __$b35(__$ctx,__$ref){__$ctx.__$a=0;var __$r__$59;var __$l0__$60=__$ctx._mode;__$ctx._mode="";var __$l1__$61=__$ctx.ctx;__$ctx.ctx=__$ctx.ctx._value;var __$r__$62;__$ctx.__$a=5;__$r__$62=applyc(__$ctx,__$ref);__$r__$59=__$r__$62;__$ctx._mode=__$l0__$60;__$ctx.ctx=__$l1__$61;return}function __$b36(__$ctx,__$ref){__$ctx.__$a=0;__$ctx._listLength--;var ctx__$63=__$ctx.ctx;if(ctx__$63&&ctx__$63!==true||ctx__$63===0){__$ctx._buf.push(ctx__$63+"")}return}function __$b37(__$ctx,__$ref){__$ctx.__$a=0;__$ctx._listLength--;return}function __$b38(__$ctx,__$ref){__$ctx.__$a=0;var v__$64=__$ctx.ctx,l__$65=v__$64.length,i__$66=0,prevPos__$67=__$ctx.position,prevNotNewList__$68=__$ctx._notNewList;if(prevNotNewList__$68){__$ctx._listLength+=l__$65-1}else{__$ctx.position=0;__$ctx._listLength=l__$65}__$ctx._notNewList=true;while(i__$66<l__$65)!function(){var __$r__$69;var __$l0__$70=__$ctx.ctx;__$ctx.ctx=v__$64[i__$66++];__$r__$69=applyc(__$ctx,__$ref);__$ctx.ctx=__$l0__$70;return __$r__$69}();prevNotNewList__$68||(__$ctx.position=prevPos__$67);return}function __$b39(__$ctx,__$ref){__$ctx.__$a=0;var vBlock__$71=__$ctx.ctx.block,vElem__$72=__$ctx.ctx.elem,block__$73=__$ctx._currBlock||__$ctx.block;__$ctx.ctx||(__$ctx.ctx={});var __$r__$74;var __$l0__$75=__$ctx._mode;__$ctx._mode="default";var __$l1__$76=__$ctx.block;__$ctx.block=vBlock__$71||(vElem__$72?block__$73:undefined);var __$l2__$77=__$ctx._currBlock;__$ctx._currBlock=vBlock__$71||vElem__$72?undefined:block__$73;var __$l3__$78=__$ctx.elem;__$ctx.elem=__$ctx.ctx.elem;var __$l4__$79=__$ctx.mods;__$ctx.mods=vBlock__$71?__$ctx.ctx.mods||(__$ctx.ctx.mods={}):__$ctx.mods;var __$l5__$80=__$ctx.elemMods;__$ctx.elemMods=__$ctx.ctx.elemMods||{};__$ctx.block||__$ctx.elem?__$ctx.position=(__$ctx.position||0)+1:__$ctx._listLength--;applyc(__$ctx,__$ref);__$r__$74=undefined;__$ctx._mode=__$l0__$75;__$ctx.block=__$l1__$76;__$ctx._currBlock=__$l2__$77;__$ctx.elem=__$l3__$78;__$ctx.mods=__$l4__$79;__$ctx.elemMods=__$l5__$80;return}function __$g0(__$ctx,__$ref){var __$t=__$ctx.block;if(__$t==="page"){var __$t=__$ctx.elem;if(__$t==="js"){__$ctx.__$a=0;return"script"}else if(__$t==="css"){if(__$ctx.ctx.url){__$ctx.__$a=0;return"link"}__$ctx.__$a=0;return"style"}else if(__$t==="head"){__$ctx.__$a=0;return"head"}else if(__$t==="favicon"){__$ctx.__$a=0;return"link"}else if(__$t==="link"){__$ctx.__$a=0;return"link"}else if(__$t==="meta"){__$ctx.__$a=0;return"meta"}else if(__$t==="body"){__$ctx.__$a=0;return"body"}}else if(__$t==="ua"){if(!__$ctx.elem){__$ctx.__$a=0;return"script"}}__$ctx.__$a=0;return undefined;return __$ref};
+     /// -------------------------------------
+/// ---------- Bootstrap start ----------
+/// -------------------------------------
+function run(templates, context, ignore) {
+  if (!ignore)
+    ignore = {};
+  var index = 0;
+  var currentId = null;
+  var last = null;
+
+  Object.keys(ignore).forEach(function(key) {
+    if (ignore[key] > 0)
+      ignore[key]--;
+  });
+
+  function template() {
+    var id = index++;
+    var match = !context.$override &&
+                Array.prototype.every.call(arguments, function(cond) {
+      try {
+        return typeof cond === 'function' ? cond.call(context) : cond;
+      } catch (e) {
+        if (/Cannot read property/.test(e.message))
+          return false;
+      }
+    });
+
+    // Respect applyNext
+    if (match && ignore[id]) match = false;
+
+    // Ignore body if match failed
+    if (!match) return function() {};
+
+    // Set current id
+    currentId = id;
+
+    return function bodyHandler(body) {
+      last = {
+        id: id,
+        body: typeof body === 'function' ? body.bind(context)
+                                         : function() { return body }
+      };
+
+      return null;
+    };
+  };
+
+  function local() {
+    var backup = [];
+
+    Array.prototype.forEach.call(arguments, function(change) {
+      Object.keys(change).forEach(function(key) {
+        var parts = key.split('.'),
+            newValue = change[key],
+            oldValue,
+            subContext = context;
+
+        // Dive inside
+        for (var i = 0; i < parts.length - 1; i++) {
+          subContext = subContext[parts[i]];
+        }
+
+        // Set property and remember old value
+        oldValue = subContext[parts[i]];
+        subContext[parts[i]] = newValue;
+
+        // Push old value to backup list
+        backup.push({
+          key: parts,
+          value: oldValue
+        });
+      });
+    });
+
+    return function bodyHandler(body) {
+      var result = typeof body === 'function' ? body.call(context) : body;
+
+      // Rollback old values
+      for (var i = backup.length - 1; i >= 0; i--) {
+        var subContext = context,
+            change = backup[i];
+
+        // Dive inside
+        for (var j = 0; j < change.key.length - 1; j++) {
+          subContext = subContext[change.key[j]];
+        }
+
+        // Restore value
+        subContext[change.key[j]] = change.value;
+      }
+
+      return result;
+    };
+  };
+
+  function apply() {
+    return local.apply(this, arguments)(function() {
+      return run(templates, context, ignore);
+    });
+  };
+
+  function applyNext() {
+    return local.apply(this, arguments)(function() {
+      ignore[currentId] = 2;
+      return run(templates, context, ignore);
+    });
+  };
+
+  function oninit(cb) {
+    if (context.$init) cb(exports, context.$context);
+  }
+
+  templates.call(context, template, local, apply, applyNext, oninit);
+
+  if (!last) {
+    if (context.$init) return;
+    throw new Error('Match failed');
+  }
+  return last.body();
+};
+exports.apply = function apply(ctx) {
+  try {
+    return applyc(ctx || this);
+  } catch (e) {
+    e.xjstContext = ctx || this;
+    throw e;
+  }
+};function applyc(ctx) {
+  return run(templates, ctx);
+};
+try {
+  applyc({
+    $init:true,
+    $exports: exports,
+    $context: { recordExtensions: function() {} }
+  });
+} catch (e) {
+  // Just ignore any errors
+}
+function templates(template, local, apply, applyNext, oninit) {
+/// -------------------------------------
+/// ---------- Bootstrap end ------------
+/// -------------------------------------
+
+/// -------------------------------------
+/// ---------- User code start ----------
+/// -------------------------------------
+/// -------------------------------------
+/// --------- BEM-XJST Runtime Start ----
+/// -------------------------------------
+
+  var __$that = this,
+      __$blockRef = {},
+      __$elemRef = {},
+      __$queue = [];
+
+  // Called after all matches
+  function __$flush() {
+    __$queue.filter(function(item) {
+      return !item.__$parent;
+    }).forEach(function(item) {
+      function apply(conditions, item) {
+        if (item && item.__$children) {
+          // Sub-template
+          var subcond = conditions.concat(item.__$cond);
+          item.__$children.forEach(function(child) {
+            apply(subcond, child);
+          });
+        } else {
+          var hasBlock = false;
+          var hasElem = false;
+          conditions = conditions.filter(function(cond) {
+            if (cond === __$blockRef) {
+              hasBlock = true;
+              return false;
+            }
+            if (cond === __$elemRef) {
+              hasElem = true;
+              return false;
+            }
+            return true;
+          });
+          if (hasBlock && !hasElem) conditions.push(!__$that.elem);
+
+          // Body
+          template.apply(null, conditions)(item);
+        }
+      }
+      apply([], item);
+    });
+  };
+
+  // Matching
+  function match() {
+    function fn() {
+      var args = Array.prototype.slice.call(arguments);
+
+      args.forEach(function(arg) {
+        if (arg && arg.__$children) {
+          // Sub-template
+          arg.__$parent = fn;
+        }
+        fn.__$children.push(arg);
+      });
+
+      // Handle match().match()
+      var res = fn;
+      while (res.__$parent) res = res.__$parent;
+      return res;
+    };
+    __$queue.push(fn);
+    fn.__$children = [];
+    fn.__$parent = null;
+    fn.__$cond = Array.prototype.slice.call(arguments);
+
+    fn.match = match;
+    fn.elemMatch = elemMatch;
+    fn.block = block;
+    fn.elem = elem;
+    fn.mode = mode;
+    fn.mod = mod;
+    fn.elemMod = elemMod;
+    fn.def = def;
+    fn.tag = tag;
+    fn.attrs = attrs;
+    fn.cls = cls;
+    fn.js = js;
+    fn.jsAttr = jsAttr;
+    fn.bem = bem;
+    fn.mix = mix;
+    fn.content = content;
+
+    // match().match()
+    if (this && this.__$children) {
+      this.__$children.push(fn);
+      fn.__$parent = this;
+    }
+
+    return fn;
+  };
+
+  function block(name) {
+    return match.call(this, __$blockRef, __$that.block === name);
+  };
+
+  function elemMatch() {
+    var args = Array.prototype.slice.call(arguments);
+    return match.apply(this, [__$elemRef].concat(args));
+  }
+
+  function elem(name) {
+    return match.call(this, __$elemRef, __$that.elem === name);
+  };
+
+  function mode(name) {
+    return match.call(this, __$that._mode === name);
+  };
+
+  function mod(name, value) {
+    return match.call(this, __$that.mods, function() {
+      return __$that.mods[name] === value;
+    });
+  }
+
+  function elemMod(name, value) {
+    return match.call(this, __$that.elemMods, function() {
+      return __$that.elemMods[name] === value;
+    });
+  }
+
+  function def() { return mode.call(this, 'default'); };
+  function tag() { return mode.call(this, 'tag'); };
+  function attrs() { return mode.call(this,'attrs'); };
+  function cls() { return mode.call(this, 'cls'); };
+  function js() { return mode.call(this, 'js'); };
+  function jsAttr() { return mode.call(this, 'jsAttr'); };
+  function bem() { return mode.call(this, 'bem'); };
+  function mix() { return mode.call(this, 'mix'); };
+  function content() { return mode.call(this, 'content'); };
+
+  // Apply by mode, local by mode and applyCtx
+  apply = function(apply) {
+    return function bemApply() {
+      var args = Array.prototype.map.call(arguments, function(arg) {
+        if (typeof arg === 'string') {
+          return { _mode: arg };
+        } else {
+          return arg;
+        }
+      });
+      return apply.apply(null, args);
+    };
+  }(apply);
+
+  applyNext = function(applyNext) {
+    return function bemApplyNext() {
+      var args = Array.prototype.map.call(arguments, function(arg) {
+        if (typeof arg === 'string') {
+          return { _mode: arg };
+        } else {
+          return arg;
+        }
+      });
+      return applyNext.apply(null, args);
+    };
+  }(applyNext);
+
+  local = function(local) {
+    return function bemLocal() {
+      var args = Array.prototype.map.call(arguments, function(arg) {
+        if (typeof arg === 'string') {
+          return { _mode: arg };
+        } else {
+          return arg;
+        }
+      });
+      return local.apply(null, args);
+    };
+  }(local);
+
+  function applyCtx() {
+    var context = arguments[arguments.length - 1];
+    var rest = Array.prototype.slice.call(arguments, 0, -1);
+    return applyNext.apply(this, [{ _mode: '', ctx: context }].concat(rest));
+  };
+;
+;
+/// -------------------------------------
+/// --------- BEM-XJST Runtime End ------
+/// -------------------------------------
+
+/// -------------------------------------
+/// ------ BEM-XJST User-code Start -----
+/// -------------------------------------
+/* begin: /Users/user/Development/bem-homefinance/libs/bem-core/common.blocks/i-bem/i-bem.bemhtml */
+/*global oninit */
+oninit(function(exports) {
+
+var BEM_ = {},
+    toString = Object.prototype.toString,
+    isArray = Array.isArray || function(obj) {
+        return toString.call(obj) === '[object Array]';
+    },
+    SHORT_TAGS = { // хэш для быстрого определения, является ли тэг коротким
+        area : 1, base : 1, br : 1, col : 1, command : 1, embed : 1, hr : 1, img : 1,
+        input : 1, keygen : 1, link : 1, meta : 1, param : 1, source : 1, wbr : 1 };
+
+/** @fileOverview - module for internal BEM helpers */
+/** @requires BEM */
+
+(function(BEM, undefined) {
+
+/**
+ * Separator for modifiers and their values
+ * @const
+ * @type String
+ */
+var MOD_DELIM = '_',
+
+/**
+ * Separator between block names and a nested element
+ * @const
+ * @type String
+ */
+    ELEM_DELIM = '__',
+
+/**
+ * Pattern for acceptable names of elements and modifiers
+ * @const
+ * @type String
+ */
+    NAME_PATTERN = '[a-zA-Z0-9-]+';
+
+function buildModPostfix(modName, modVal) {
+    var res = MOD_DELIM + modName;
+    if (modVal !== true) res += MOD_DELIM + modVal;
+    return res;
+}
+
+function buildBlockClass(name, modName, modVal) {
+    var res = name;
+    if (modVal) res += buildModPostfix(modName, modVal);
+    return res;
+}
+
+function buildElemClass(block, name, modName, modVal) {
+    var res = buildBlockClass(block) + ELEM_DELIM + name;
+    if (modVal) res += buildModPostfix(modName, modVal);
+    return res;
+}
+
+BEM.INTERNAL = {
+
+    NAME_PATTERN : NAME_PATTERN,
+
+    MOD_DELIM : MOD_DELIM,
+    ELEM_DELIM : ELEM_DELIM,
+
+    buildModPostfix : buildModPostfix,
+
+    /**
+     * Builds the class for a block or element with a modifier
+     * @private
+     * @param {String} block Block name
+     * @param {String} [elem] Element name
+     * @param {String} [modName] Modifier name
+     * @param {String} [modVal] Element name
+     * @returns {String} Class string
+     */
+    buildClass : function(block, elem, modName, modVal) {
+        var typeOfModName = typeof modName;
+        if(typeOfModName === 'string' || typeOfModName === 'boolean') {
+            var typeOfModVal = typeof modVal;
+            if(typeOfModVal !== 'string' && typeOfModVal !== 'boolean') {
+                modVal = modName;
+                modName = elem;
+                elem = undefined;
+            }
+        } else if(typeOfModName !== 'undefined') {
+            modName = undefined;
+        } else if(elem && typeof elem !== 'string') {
+            elem = undefined;
+        }
+
+        if(!(elem || modName)) { // оптимизация для самого простого случая
+            return block;
+        }
+
+        if (elem)
+            return buildElemClass(block, elem, modName, modVal);
+        else
+            return buildBlockClass(block, modName, modVal);
+    },
+
+    /**
+     * Builds modifier classes
+     * @private
+     * @param {String} block Block name
+     * @param {String} [elem] Element name
+     * @param {Object} [mods] Modifier name
+     * @returns {String} Class string
+     */
+    buildModsClasses : function(block, elem, mods) {
+
+        var res = '';
+
+        if(mods) {
+            var modName; // TODO: разобраться с OmetaJS и YUI Compressor
+            for(modName in mods) {
+                if(!mods.hasOwnProperty(modName)) continue;
+
+                var modVal = mods[modName];
+                if(!modVal && modVal !== 0) continue;
+                typeof modVal !== 'boolean' && (modVal += '');
+
+                res += ' ' + (elem?
+                    buildElemClass(block, elem, modName, modVal) :
+                    buildBlockClass(block, modName, modVal));
+            }
+        }
+
+        return res;
+
+    },
+
+    /**
+     * Builds full classes for a block or element with modifiers
+     * @private
+     * @param {String} block Block name
+     * @param {String} [elem] Element name
+     * @param {Object} [mods] Modifier name
+     * @returns {String} Class string
+     */
+    buildClasses : function(block, elem, mods) {
+
+        var res = '';
+
+        if (elem)
+            res += buildElemClass(block, elem);
+        else
+            res += buildBlockClass(block);
+
+        res += this.buildModsClasses(block, elem, mods);
+
+        return res;
+
+    }
+
+};
+
+})(BEM_);
+
+var buildEscape = (function() {
+    var ts = { '"' : '&quot;', '&' : '&amp;', '<' : '&lt;', '>' : '&gt;' },
+        f = function(t) { return ts[t] || t; };
+    return function(r) {
+        r = new RegExp(r, 'g');
+        return function(s) { return ('' + s).replace(r, f); };
+    };
+})();
+
+function BEMContext(context, apply_) {
+    this.ctx = typeof context === null ? '' : context;
+    this.apply = apply_;
+    this._str = '';
+
+    // Compatibility stuff, just in case
+    var self = this;
+    this._buf = {
+      push: function() {
+        var chunks = Array.prototype.slice.call(arguments).join('');
+        self._str += chunks;
+      },
+      join: function() {
+        return this._str;
+      }
+    };
+    this._ = this;
+
+    // Stub out fields that will be used later
+    this._start = true;
+    this._mode = '';
+    this._listLength = 0;
+    this._notNewList = false;
+    this.position = 0;
+    this.block = undefined;
+    this.elem = undefined;
+    this.mods = undefined;
+    this.elemMods = undefined;
+}
+
+BEMContext.prototype.isArray = isArray;
+
+BEMContext.prototype.isSimple = function isSimple(obj) {
+    var t = typeof obj;
+    return t === 'string' || t === 'number' || t === 'boolean';
+};
+
+BEMContext.prototype.isShortTag = function isShortTag(t) {
+    return SHORT_TAGS.hasOwnProperty(t);
+};
+
+BEMContext.prototype.extend = function extend(o1, o2) {
+    if(!o1 || !o2) return o1 || o2;
+    var res = {}, n;
+    for(n in o1) o1.hasOwnProperty(n) && (res[n] = o1[n]);
+    for(n in o2) o2.hasOwnProperty(n) && (res[n] = o2[n]);
+    return res;
+};
+
+BEMContext.prototype.identify = (function() {
+    var cnt = 0,
+        id = (+new Date()),
+        expando = '__' + id,
+        get = function() { return 'uniq' + id + (++cnt); };
+    return function(obj, onlyGet) {
+        if(!obj) return get();
+        if(onlyGet || obj[expando]) {
+            return obj[expando];
+        } else {
+            return (obj[expando] = get());
+        }
+    };
+})();
+
+BEMContext.prototype.xmlEscape = buildEscape('[&<>]');
+BEMContext.prototype.attrEscape = buildEscape('["&<>]');
+
+BEMContext.prototype.BEM = BEM_;
+
+BEMContext.prototype.isFirst = function isFirst() {
+    return this.position === 1;
+};
+
+BEMContext.prototype.isLast = function isLast() {
+    return this.position === this._listLength;
+};
+
+BEMContext.prototype.generateId = function generateId() {
+    return this.identify(this.ctx);
+};
+
+// Wrap xjst's apply and export our own
+var oldApply = exports.apply;
+exports.apply = BEMContext.apply = function _apply(context) {
+    var ctx = new BEMContext(context || this, oldApply);
+    ctx.apply();
+    return ctx._str;
+};
+
+BEMContext.prototype.reapply = BEMContext.apply;
+
+}); // oninit
+
+match(this._mode === '')(
+
+    match()(function() {
+        var vBlock = this.ctx.block,
+            vElem = this.ctx.elem,
+            block = this._currBlock || this.block;
+
+        this.ctx || (this.ctx = {});
+
+        local('default', {
+            block : vBlock || (vElem? block : undefined),
+            _currBlock : vBlock || vElem? undefined : block,
+            elem : this.ctx.elem,
+            mods : vBlock? this.ctx.mods || (this.ctx.mods = {}) : this.mods,
+            elemMods : this.ctx.elemMods || {}
+        })(function() {
+            (this.block || this.elem)?
+                (this.position = (this.position || 0) + 1) :
+                this._listLength--;
+            apply();
+        });
+    }),
+
+    match(function() { return this._.isArray(this.ctx); })(function() {
+        var v = this.ctx,
+            l = v.length,
+            i = 0,
+            prevPos = this.position,
+            prevNotNewList = this._notNewList;
+
+        if(prevNotNewList) {
+            this._listLength += l - 1;
+        } else {
+            this.position = 0;
+            this._listLength = l;
+        }
+
+        this._notNewList = true;
+
+        while(i < l)
+            apply({ ctx : v[i++] });
+
+        prevNotNewList || (this.position = prevPos);
+    }),
+
+    match(!this.ctx)(function() {
+        this._listLength--;
+    }),
+
+    match(function() { return this._.isSimple(this.ctx); })(function() {
+        this._listLength--;
+
+        var ctx = this.ctx;
+        if (ctx && ctx !== true || ctx === 0) {
+            this._buf.push(ctx + '');
+        }
+    }),
+
+    // hack-check for Vow-promise
+    match(this.ctx && this.ctx._vow)(function() {
+        applyCtx(this.ctx._value);
+    })
+
+);
+
+def()(function() {
+    var _this = this,
+        BEM_ = _this.BEM,
+        v = this.ctx,
+        isBEM,
+        tag,
+        result;
+
+    local({ _str: '' })(function() {
+        tag = apply('tag');
+        typeof tag !== 'undefined' || (tag = v.tag);
+        typeof tag !== 'undefined' || (tag = 'div');
+
+        if(tag) {
+            var jsParams, js;
+            if(this.block && v.js !== false) {
+                js = apply('js');
+                js = js? this._.extend(v.js, js === true? {} : js) : v.js === true? {} : v.js;
+                js && ((jsParams = {})[BEM_.INTERNAL.buildClass(this.block, v.elem)] = js);
+            }
+
+            this._str += '<' + tag;
+
+            isBEM = apply('bem');
+            typeof isBEM !== 'undefined' || (isBEM = typeof v.bem !== 'undefined' ? v.bem : v.block || v.elem);
+
+            var cls = apply('cls');
+            cls || (cls = v.cls);
+
+            var addJSInitClass = v.block && jsParams;
+            if(isBEM || cls) {
+                this._str += ' class="';
+                if(isBEM) {
+
+                    this._str += BEM_.INTERNAL.buildClasses(this.block, v.elem, v.elemMods || v.mods);
+
+                    var mix = apply('mix');
+                    v.mix && (mix = mix? mix.concat(v.mix) : v.mix);
+
+                    if(mix) {
+                        var visited = {},
+                            visitedKey = function (block, elem) {
+                              return (block || '') + '__' + (elem || '');
+                            };
+
+                        visited[visitedKey(this.block, this.elem)] = true;
+
+                        // Transform mix to the single-item array if it's not array
+                        if (!this._.isArray(mix)) mix = [mix];
+                        for (var i = 0; i < mix.length; i++) {
+                            var mixItem = mix[i],
+                                hasItem = mixItem.block || mixItem.elem,
+                                block = mixItem.block || mixItem._block || _this.block,
+                                elem = mixItem.elem || mixItem._elem || _this.elem;
+
+                            if (hasItem) this._str += ' ';
+                            this._str += BEM_.INTERNAL[hasItem? 'buildClasses' : 'buildModsClasses'](
+                                block,
+                                mixItem.elem || mixItem._elem ||
+                                    (mixItem.block ? undefined : _this.elem),
+                                mixItem.elemMods || mixItem.mods);
+
+                            if(mixItem.js) {
+                                (jsParams || (jsParams = {}))[BEM_.INTERNAL.buildClass(block, mixItem.elem)] = mixItem.js === true? {} : mixItem.js;
+                                addJSInitClass || (addJSInitClass = block && !mixItem.elem);
+                            }
+
+                            // Process nested mixes
+                            if (hasItem && !visited[visitedKey(block, elem)]) {
+                                visited[visitedKey(block, elem)] = true;
+                                var nestedMix = apply('mix', {
+                                    block: block,
+                                    elem: elem
+                                });
+
+                                if (nestedMix) {
+                                    for (var j = 0; j < nestedMix.length; j++) {
+                                        var nestedItem = nestedMix[j];
+                                        if (!nestedItem.block &&
+                                            !nestedItem.elem ||
+                                            !visited[visitedKey(
+                                              nestedItem.block,
+                                              nestedItem.elem
+                                            )]) {
+                                            nestedItem._block = block;
+                                            nestedItem._elem = elem;
+                                            mix.splice(i + 1, 0, nestedItem);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if (cls) this._str += isBEM? ' ' + cls : cls;
+
+                if (addJSInitClass)
+                    this._str += ' i-bem"';
+                else
+                    this._str += '"';
+            }
+
+            if(isBEM && jsParams) {
+                this._str += ' data-bem="' +
+                    this._.attrEscape(JSON.stringify(jsParams)) +
+                    '"';
+            }
+
+            var attrs = apply('attrs');
+            attrs = this._.extend(attrs, v.attrs); // NOTE: возможно стоит делать массив, чтобы потом быстрее сериализовывать
+            if(attrs) {
+                var name, attr; // TODO: разобраться с OmetaJS и YUI Compressor
+                for(name in attrs) {
+                    attr = attrs[name];
+                    if(attr === undefined) continue;
+                    this._str += ' ' + name + '="' +
+                        this._.attrEscape(this._.isSimple(attr)?
+                            attr :
+                            this.reapply(attr)) +
+                        '"';
+                }
+            }
+        }
+
+        if(this._.isShortTag(tag)) {
+            this._str += '/>';
+        } else {
+            if(tag) this._str += '>';
+
+            var content = apply('content');
+            if(content || content === 0) {
+                isBEM = this.block || this.elem;
+                apply('', {
+                    _notNewList: false,
+                    position: isBEM ? 1 : this.position,
+                    _listLength: isBEM ? 1 : this._listLength,
+                    ctx: content
+                });
+            }
+
+            if (tag) this._str += '</' + tag + '>';
+        }
+
+        // If the buffer was replaced, pretend that we're pushing to the buffer
+        result = this._str;
+    });
+
+    this._buf.push(result);
+});
+
+tag()(undefined);
+attrs()(undefined);
+cls()(undefined);
+js()(undefined);
+bem()(undefined);
+mix()(undefined);
+content()(function() { return this.ctx.content; });
+
+/* end: /Users/user/Development/bem-homefinance/libs/bem-core/common.blocks/i-bem/i-bem.bemhtml */
+/* begin: /Users/user/Development/bem-homefinance/libs/bem-core/common.blocks/ua/ua.bemhtml */
+block('ua')(
+    tag()('script'),
+    bem()(false),
+    content()([
+        '(function(e,c){',
+            'e[c]=e[c].replace(/(ua_js_)no/g,"$1yes");',
+        '})(document.documentElement,"className");'
+    ])
+);
+
+/* end: /Users/user/Development/bem-homefinance/libs/bem-core/common.blocks/ua/ua.bemhtml */
+/* begin: /Users/user/Development/bem-homefinance/libs/bem-core/touch.blocks/ua/ua.bemhtml */
+block('ua').js()(true);
+
+/* end: /Users/user/Development/bem-homefinance/libs/bem-core/touch.blocks/ua/ua.bemhtml */
+/* begin: /Users/user/Development/bem-homefinance/libs/bem-core/common.blocks/page/__css/page__css.bemhtml */
+block('page').elem('css')(
+    bem()(false),
+    tag()('style'),
+    match(function() { return this.ctx.url; })(
+        tag()('link'),
+        attrs()(function() { return { rel : 'stylesheet', href : this.ctx.url }; })
+    )
+);
+
+/* end: /Users/user/Development/bem-homefinance/libs/bem-core/common.blocks/page/__css/page__css.bemhtml */
+/* begin: /Users/user/Development/bem-homefinance/libs/bem-core/common.blocks/page/__js/page__js.bemhtml */
+block('page').elem('js')(
+    bem()(false),
+    tag()('script'),
+    attrs().match(function() { return this.ctx.url; })(function() {
+        return { src : this.ctx.url };
+    })
+);
+
+/* end: /Users/user/Development/bem-homefinance/libs/bem-core/common.blocks/page/__js/page__js.bemhtml */
+/* begin: /Users/user/Development/bem-homefinance/libs/bem-core/common.blocks/page/page.bemhtml */
+block('page')(
+
+    def()(function() {
+        var ctx = this.ctx;
+        applyCtx([
+            ctx.doctype || '<!DOCTYPE html>',
+            {
+                tag : 'html',
+                cls : 'ua_js_no',
+                content : [
+                    {
+                        elem : 'head',
+                        content : [
+                            { tag : 'meta', attrs : { charset : 'utf-8' } },
+                            { tag : 'title', content : ctx.title },
+                            { block : 'ua' },
+                            ctx.head,
+                            ctx.styles,
+                            ctx.favicon? { elem : 'favicon', url : ctx.favicon } : ''
+                        ]
+                    },
+                    // Добавляем элемент, чтобы сработал другой шаблон и не было зацикливания
+                    this.extend(ctx, { elem : 'body' })
+                ]
+            }
+        ]);
+    }),
+
+    elem('body')(
+        tag()('body'),
+        content()(function() {
+            return [
+                applyNext(),
+                this.ctx.scripts
+            ];
+        }),
+        def()(function() {
+            // Обратно очищаем поле elem, чтобы сохранить правильный контекст
+            this.ctx.elem = null;
+            applyNext();
+        })
+    ),
+
+    elem('head')(
+        bem()(false),
+        tag()('head')
+    ),
+
+    elem('meta')(
+        bem()(false),
+        tag()('meta')
+    ),
+
+    elem('link')(
+        bem()(false),
+        tag()('link')
+    ),
+
+    elem('favicon')(
+        bem()(false),
+        tag()('link'),
+        attrs()(function() { return { rel : 'shortcut icon', href : this.ctx.url }; })
+    )
+
+);
+
+/* end: /Users/user/Development/bem-homefinance/libs/bem-core/common.blocks/page/page.bemhtml */
+/* begin: /Users/user/Development/bem-homefinance/libs/bem-core/touch.blocks/page/page.bemhtml */
+block('page')(
+    mode('head')(function() {
+        return [
+            { block : 'ua' },
+            {
+                elem : 'meta',
+                attrs : {
+                    name : 'viewport',
+                    content : 'width=device-width,' +
+                        (this.ctx.zoom?
+                            'initial-scale=1' :
+                            'maximum-scale=1,initial-scale=1,user-scalable=0')
+                }
+            },
+            { elem : 'meta', attrs : { name : 'format-detection', content : 'telephone=no' } },
+            { elem : 'link', attrs : { name : 'apple-mobile-web-app-capable', content : 'yes' } },
+            this.ctx.head
+        ];
+    }),
+
+    mix()(function() {
+        return applyNext().concat({ block : 'ua', js : true });
+    })
+);
+
+/* end: /Users/user/Development/bem-homefinance/libs/bem-core/touch.blocks/page/page.bemhtml */;
+/// -------------------------------------
+/// ------ BEM-XJST User-code End -------
+/// -------------------------------------
+__$flush();
+/// -------------------------------------
+/// ---------- User code end ------------
+/// -------------------------------------
+};;
      return exports;
   })({});
   var defineAsGlobal = true;
