@@ -1,4 +1,5 @@
 var express = require('express'),
+    morgan  = require('morgan'),
     enbMiddleware = require('enb/lib/server/server-middleware');
 
 
@@ -8,6 +9,8 @@ app.use(enbMiddleware.createMiddleware({
     cdir: process.cwd(),
     noLog: false
 }));
+
+app.use(morgan('default'));
 
 app.get('/', function(req, res){
     res.send('Hello World');

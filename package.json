@@ -11,7 +11,8 @@
     "node": ">=0.10"
   },
   "dependencies": {
-      "express": "~4.3.0"
+      "express": "~4.3.0",
+      "morgan": "~1.1.1"
   },
   "devDependencies": {
     "enb": "0.10.0",
