@@ -1,16 +1,18 @@
 var express = require('express'),
-    morgan  = require('morgan'),
-    enbMiddleware = require('enb/lib/server/server-middleware');
+    morganMW  = require('morgan'),
+    staticMW = require('serve-static'),
+    enbMW = require('enb/lib/server/server-middleware');
 
 
 var app = express();
 
-app.use(enbMiddleware.createMiddleware({
+app.use(enbMW.createMiddleware({
     cdir: process.cwd(),
     noLog: false
 }));
 
-app.use(morgan('default'));
+app.use(staticMW(process.cwd()))
+app.use(morganMW('default'));
 
 app.get('/', function(req, res){
     res.send('Hello World');
