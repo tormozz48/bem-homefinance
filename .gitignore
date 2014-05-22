@@ -1,4 +1,7 @@
-*.idea
+.DS_Store
+.idea
+.settings
+.project
 *.npmignore
 
 # Logs
@@ -26,4 +29,10 @@ build/Release
 # Deployed apps should consider commenting this line out:
 # see https://npmjs.org/doc/faq.html#Should-I-check-my-node_modules-folder-into-git
 node_modules
+npm-debug.log
 libs
+
+.enb/tmp
+src/bundles/*.bundles/*/*.*
+!src/bundles/desktop.bundles/*/*.bemdecl.js
+!src/bundles/errors.bundles/*/*.bemjson.js
